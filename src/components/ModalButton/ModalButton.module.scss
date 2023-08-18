@@ -1,0 +1,307 @@
+    $line_color : #1f2020 ;
+    $back_color : #3ca44a24; 
+
+// dark theme
+    $white-line-color: #ffffff;
+    $back_color_2 : #8a9f8c3d;
+
+
+.Button {
+    margin-bottom: 50px;
+    border: none;
+    position: relative;
+    z-index: 0;
+    width: 220px;
+    height: 56px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: transparent;
+    color: $line_color;
+    letter-spacing: 2px;
+    transition: all .3s ease;
+
+    &.dark {
+        color: $white-line-color;
+    }
+}
+
+.ButtonText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.Button::before,
+.Button::after,
+.ButtonText::before,
+.ButtonText::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    border-radius: 2px;
+    background: $line_color;
+    transition: all .5s ease;
+}
+
+.Button.dark::before,
+.Button.dark::after,
+.ButtonText.dark::before,
+.ButtonText.dark::after {
+    background: $white-line-color;
+}
+
+.Button::before {
+    top: 0;
+    left: 54px;
+    width: calc(100% - 56px * 2 - 16px);
+}
+
+.Button::after {
+    top: 0;
+    right: 54px;
+    width: 8px;
+}
+
+.ButtonText::before {
+    bottom: 0;
+    right: 54px;
+    width: calc(100% - 56px * 2 - 16px);
+}
+
+.ButtonText::after {
+    bottom: 0;
+    left: 54px;
+    width: 8px;
+}
+
+.ButtonLine {
+    position: absolute;
+    top: 0;
+    width: 56px;
+    height: 100%;
+    overflow: hidden;
+    
+}
+
+.ButtonLine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 300px;
+    border: solid 3px $line_color;
+    
+}
+.ButtonLine.dark::before {
+    border: solid 3px $white-line-color;
+
+}
+
+.ButtonLine:nth-child(1),
+.ButtonLine:nth-child(1)::before {
+    left: 0;
+}
+
+.ButtonLine:nth-child(2),
+.ButtonLine:nth-child(2)::before {
+    right: 0;
+}
+
+.Button:hover {
+    letter-spacing: 6px;
+}
+
+.Button:hover::before,
+.Button:hover .ButtonText::before {
+    width: 8px;
+}
+
+.Button:hover::after,
+.Button:hover .ButtonText::after {
+    width: calc(100% - 56px * 2 - 16px);
+}
+
+.ButtonDrow1,
+.ButtonDrow2 {
+    position: absolute;
+    z-index: -1;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+}
+
+.ButtonDrow1 {
+    top: -16px;
+    left: 40px;
+    width: 32px;
+    height: 0;
+    transform: rotate(30deg);
+    
+}
+
+.ButtonDrow2 {
+    top: 44px;
+    left: 77px;
+    width: 32px;
+    height: 0;
+    transform: rotate(-127deg);
+}
+
+.ButtonDrow1::before,
+.ButtonDrow1::after,
+.ButtonDrow2::before,
+.ButtonDrow2::after {
+    content: '';
+    position: absolute;
+}
+
+.ButtonDrow1::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-60deg);
+}
+
+.ButtonDrow1::after {
+    top: -10px;
+    left: 45px;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(69deg);
+}
+
+.ButtonDrow2::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-146deg);
+}
+
+.ButtonDrow2::after {
+    bottom: 26px;
+    left: -40px;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-262deg);
+}
+
+.ButtonDrow1,
+.ButtonDrow1::before,
+.ButtonDrow1::after,
+.ButtonDrow2,
+.ButtonDrow2::before,
+.ButtonDrow2::after {
+    background: $back_color;
+}
+
+.ButtonDrow1.dark,
+.ButtonDrow1.dark::before,
+.ButtonDrow1.dark::after,
+.ButtonDrow2.dark,
+.ButtonDrow2.dark::before,
+.ButtonDrow2.dark::after {
+    background: $back_color_2;
+}
+
+.Button:hover .ButtonDrow1 {
+    animation: drow1 ease-in .06s;
+    animation-fill-mode: forwards;
+}
+
+.Button:hover .ButtonDrow1::before {
+    animation: drow2 linear .08s .06s;
+    animation-fill-mode: forwards;
+}
+
+.Button:hover .ButtonDrow1::after {
+    animation: drow3 linear .03s .14s;
+    animation-fill-mode: forwards;
+}
+
+.Button:hover .ButtonDrow2 {
+    animation: drow4 linear .06s .2s;
+    animation-fill-mode: forwards;
+}
+
+.Button:hover .ButtonDrow2::before {
+    animation: drow3 linear .03s .26s;
+    animation-fill-mode: forwards;
+}
+
+.Button:hover .ButtonDrow2::after {
+    animation: drow5 linear .06s .32s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes drow1 {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 100px;
+    }
+}
+
+@keyframes drow2 {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    11% {
+        opacity: 1;
+    }
+
+    100% {
+        width: 120px;
+    }
+}
+
+@keyframes drow3 {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 80px;
+    }
+}
+
+@keyframes drow4 {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 120px;
+    }
+}
+
+@keyframes drow5 {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 124px;
+    }
+}

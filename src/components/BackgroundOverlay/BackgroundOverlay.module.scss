@@ -1,0 +1,11 @@
+@import '../Styles/_variables.scss';
+.BackgroundOverlay {
+    &.dark {
+        transition: background-color $transition;
+
+        @media screen and (min-width: $desktop) {
+            background-color: rgba(0, 0, 0, 0.55);
+        }
+
+        }
+}

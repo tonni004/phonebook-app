@@ -6,76 +6,93 @@
 }
 
 .Notification {
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     color: grey;
-}
 
-.NotificationTitle {
+    .NotificationTitle {
     margin-bottom: 5px;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 700;
     color: #000;
-}
 
+    &.dark {
+        color: white;
+    }
+}
+}
 
 .ContactsItem {
+    position: relative;
     display: flex;
-    justify-content: center;
-
-    padding: 5px;
-    border-radius: 9px;
-    font-size: 18px;
-    transition: transform 500ms ease,
-    background-color 500ms ease;
-
-    // &:not(:last-child){
-    //  margin-bottom: 8px;
-    // }
-
-    &:hover,
-    &:focus {
     justify-content: space-between;
     align-items: center;
-    transform: scale(1.1);
-    background-color: $assent-color;
-    color: white;
-}
-}
 
+    padding: 7px;
+    border-radius: 8px;
+    font-size: 18px;
 
-.ContactName {
-    margin-right: 10px;
-}
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+            
+        display: block;
+        width: 75%;
+        height: 1px;
+        background-color: $assent-color;
 
-.DeleteBtn {
-    display: none;
-    border: none;
-    margin-left: 12px;
-    
-    background-color: transparent;
-    color: white;
+        transform:scaleX(0);
+        transform-origin: left center;
+        transition: transform $transition;
 
-    cursor: pointer;
-
-    transition: color 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
-    .ContactsItem:hover &,
-    .ContactsItem:focus & {
-        
-            display: block;
-
+        @media screen and (min-width: $mobile) and (max-width: 767px) {
+            width: 72%;
+        }
     }
 
-        &:hover,
-        &:focus {
-            color:hsl(0, 0%, 92%);
-    
-        }
+    &.dark::after {
+        background-color: $white-color;
+    }
 
+
+    &:hover::after,
+    &:focus::after {
+    transform: scaleX(1);
+
+    }
+      
+}
+
+.ContactName {
+    margin-right: 12px;
+}
+
+.DeleteButton {
+    opacity: 0;
+    transition: opacity 500ms ease;
+
+    .ContactsItem:hover & {
+        opacity: 1;
+    }
 }
 
 
+// delete modal
 
+.DeleteModalField {
+    padding: 20px 50px;
+    text-align: center;
+}
+
+.DeleteModalTitle {
+    margin-bottom: 30px;
+}
+
+.DeleteModalButton {
+    margin-right: 35px;
+}

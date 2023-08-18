@@ -1,7 +1,18 @@
+@import '../Styles/variables';
 .Container {
     margin-left: auto;
     margin-right: auto;
-    width: 1170px;
     padding: 0 15px;
     
+    @media screen and (min-width: $mobile){
+        width: $mobile;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: $tablet;
+    }
+    
+    @media screen and (min-width: $desktop) {
+        width: $desktop;
+    }
 }

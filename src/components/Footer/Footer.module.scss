@@ -1,0 +1,129 @@
+@import '../Styles/_variables';
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+
+.FooterBackground{
+    position: relative;
+    padding: 30px 30px;
+    background-color: #222;
+    color: $white-color;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 40px;
+        padding-left: 70px;
+        padding-right: 70px;
+
+    }
+    @media screen and (min-width: $desktop) {
+    padding-top: 60px;
+    padding-left: 150px;
+    padding-right: 150px;
+
+    }
+}
+
+.Footer {
+    @media screen and (min-width: $tablet) {
+    display: flex;
+    justify-content:space-between;
+    }
+}
+
+.LinkField{
+    @media screen and (min-width: $tablet) {
+        display: flex;
+    }
+}
+
+.NavigationField {
+    @media screen and (min-width: $mobile) and (max-width: 767px) {
+        margin-bottom: 30px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        margin-right: 100px;
+    }
+}
+
+.NavigationTitle {
+    margin-bottom: 10px;
+}
+
+.ListLinkItem {
+    color: $white-color;
+    transition: color $transition;
+    &:hover,
+    &:focus {
+        color: $nav-link-dark-theme
+    }
+    @media screen and (min-width: $tablet) {
+        padding: 5px 0; 
+    }
+}
+
+.FollowUsField {
+    @media screen and (min-width: $mobile) and (max-width: 767px) {
+            margin-bottom: 20px;
+        }
+}
+
+.FollowUsTitle {
+    @media screen and (min-width: $mobile) {
+            margin-bottom: 10px;
+    }
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 20px;
+    }
+}
+.FollowUsLink {
+    display: inline-block;
+    width: $footer-icon-width;
+    height: $footer-icon-height;
+}
+
+.FollowUsImg {
+    display: block;
+    width: $footer-icon-width;
+    height: $footer-icon-height;
+}
+.IconList {
+    display: flex;  
+}
+
+.FooterIcon {
+    height:$footer-icon-height;
+    width: $footer-icon-width;
+    cursor: pointer;
+
+    &:not(:last-child) {
+        margin-right: 15px;
+    }
+
+    &:hover,
+    &:focus {
+        animation: pulse 1s infinite ease-in-out alternate;
+    }
+}
+
+
+.FooterCopyright {
+    margin-top: 50px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+

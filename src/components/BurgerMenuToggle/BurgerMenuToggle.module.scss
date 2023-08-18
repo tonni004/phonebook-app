@@ -1,0 +1,25 @@
+@import '../Styles/variables';
+.BurgerMenuButton {
+    @media screen and (max-width: 1279px){
+            outline: none;
+            border: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            cursor: pointer;
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: transparent;
+
+            z-index: 99;
+            overflow: visible;
+    }
+
+     @media screen and (min-width: $desktop) {
+        display: none;
+    }
+}

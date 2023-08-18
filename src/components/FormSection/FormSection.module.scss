@@ -1,0 +1,31 @@
+@import '../Styles/_variables';
+.FormSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width:$desktop){
+        padding: 20% 0;
+    }
+}
+
+.FormPanel {
+    position: relative;
+    padding: 40px;
+    background-color: rgba(244, 246, 246, 0.9);
+    border: 2px solid #eeeeee;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color $transition, color $transition;
+
+    &.dark {
+    color: black;
+    background-color: rgba(244, 246, 246, 0.8);
+    border: 1px solid $nav-link-color;
+
+    }
+}

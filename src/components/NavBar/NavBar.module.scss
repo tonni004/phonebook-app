@@ -1,0 +1,79 @@
+@import '../Styles/variables';
+
+.NavBar {
+    color: $nav-link-dark-theme;
+    display: flex;
+
+    @media screen and (min-width: $mobile) and (max-width: 1279px) {
+        margin-top: 70px;
+        padding: 0;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+
+    @media screen and (min-width: $tablet) and (max-width: 1279px) {
+        padding-left: 90px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 50px;
+        margin: 0 55px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+}
+
+.NavLink{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (min-width: $mobile) and (max-width: 1279px) {
+        padding-left: 40px;
+        font-size: 20px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        display: flex;
+        font-size: 17px;
+    }
+    
+}
+
+.NavLinkItem {
+    transition: transform $transition;
+        
+    &:hover,
+    &:focus {
+        color: $assent-color;
+        @media screen and (min-width: $mobile) and (max-width: 1279px) {
+            transform: scaleX(0.95);
+            }
+        
+    }
+
+    &.dark:hover,
+    &.dark:focus {
+        color: rgb(84, 108, 84);
+    }
+
+    @media screen and (min-width: $mobile) and (max-width: 1279px) {
+        padding: 7px 0;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin-right: 10px;
+    }
+}
+
+.ToggleButtonField {
+    @media screen and (min-width: $mobile) and (max-width: 1279px) {
+        margin-top: 15px;
+        display: flex;
+        width: 50px;
+        border-radius: 25px;
+        box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.36);
+        }
+    
+}

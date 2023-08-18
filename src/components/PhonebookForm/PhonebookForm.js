@@ -1,84 +1,139 @@
 
-import { Component } from "react";
+import { useState, useContext } from "react";
+import { useSelector } from "react-redux";
+import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+
+import { motion } from "framer-motion";
 import styles from './PhonebookForm.module.scss';
+import { ThemeContext } from '../BodyTheme/BodyTheme.js';
+import classNames from "classnames";
 
-class PhonebookForm extends Component {
+import ErrorNotification from "components/ErrorNotification";
+import SubmitButton from "components/SubmitButton";
 
-    state = {
-        name: '',
-        number: '',
-    }
+import { itemContacts } from "redux/contacts/contacts-selectors";
 
-    handleChange = (e) => {
+export default function PhonebookForm({ onSubmit, onHide, modalShow }) {
+    const [name, setName] = useState('');
+    const [number, setNumber] = useState('');
+    const contacts = useSelector(itemContacts);
+
+    const { theme } = useContext(ThemeContext);
+
+
+    const handleChange = e => {
         const { name, value } = e.currentTarget;
 
-        this.setState({ [name]: value })
-    }
+        switch (name) {
+            case 'name':
+                setName(value);
+                break;
+            case 'number':
+                setNumber(value);
+                break;
+            default:
+                console.warn(`Field type - ${name} is not processed`);
+        }
+    };
 
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        this.props.onSubmit(this.state)
+        const newContact = {
+            name,
+            number,
+        }
 
-        this.reset();
+        if (contacts.find(contact => contact.name === name || contact.number === number)) {
+            const error = 'User with this name or number is already in contacts!';
+            ErrorNotification(error);
+            return;
+        }
+
+        onSubmit(newContact)
+        reset();
+        if (modalShow) {
+            onHide();
+        }
     }
 
-    reset = () => {
-        this.setState({ name: '', number: '' })
+
+    const reset = () => {
+        setName('');
+        setNumber('');
     }
 
 
-    render() {
+    return (
+        <>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 1.5 } }}
+                exit={{ opacity: 0, transition: { duration: 1.5 } }}
+                className={classNames(styles.PhonebookForm, styles[theme])} >
+                <div className={classNames(styles.PhonebookFormOverlay, styles[theme])}></div>
 
-        return (
-            <div className={styles.PhonebookForm} >
-                <form onSubmit={this.handleSubmit}>
-                    <label
-                        className={styles.PhonebookLabel}
-                    > Contact name:
+                <h2 className={styles.PhonebookFormTitle}>Phonebook</h2>
 
-                        <input
-                            className={styles.PhonebookInput}
+                <p className={classNames(styles.PhonebookFormText, styles[theme])}> Stay connected and in control of your contact information with just a few taps. Let's get started with the simple app. Happy organizing!</p>
+
+                <Form onSubmit={handleSubmit}>
+
+                    <Form.Floating className="mb-3" >
+                        <Form.Control
+                            className={styles.FormInput}
+                            id="floatingInputCustom"
                             type="text"
                             name="name"
-                            value={this.state.name}
+                            value={name}
+                            placeholder="Adam Parrish"
                             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                            title="Name may contain only letters, apostrophe, dash and spaces. For example Adam Parrish"
+                            onChange={handleChange}
+
+
                             required
-
-                            onChange={this.handleChange}
-
-                        /></label>
-
-                    <label className={styles.PhonebookNumberLabel}>
-                        Phone number:
-
-                        <input
-                            className={styles.PhonebookInput}
+                        />
+                        <label
+                            htmlFor="floatingInputCustom"
+                            className={classNames(styles.PhonebookFormLabel, styles[theme])}
+                        >Name</label>
+                    </Form.Floating>
+                    <Form.Floating className="mb-3">
+                        <Form.Control
+                            className={styles.FormInput}
+                            id="floatingNumberCustom"
                             type="tel"
                             name="number"
-                            value={this.state.number}
-                            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                            value={number}
+                            placeholder="Phone number"
+                            pattern="\+?\d+"
+                            title="Phone number must be digits and can start with +"
+                            onChange={handleChange}
+
                             required
-
-                            onChange={this.handleChange}
                         />
-                    </label>
+                        <label
+                            htmlFor="floatingNumberCustom"
+                            className={classNames(styles.PhonebookFormLabel, styles[theme])}
+                        >Phone number</label>
+                    </Form.Floating>
 
+                    <div className="d-grid gap-2">
+                        <SubmitButton
+                            className={styles.SubmitBtnField}
+                            title={'Add conctact'}
+                        />
+                    </div>
 
-                    <button
-                        className={styles.PhonebookBtn}
-                        type="submit"
-                        onClick={this.onBtnClick}
-                    >Add conctact</button>
-                </form>
-            </div>
-        )
+                </Form>
+            </motion.div >
+        </>
 
-    }
+    )
 
 }
-
-
-export default PhonebookForm;
+PhonebookForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+}

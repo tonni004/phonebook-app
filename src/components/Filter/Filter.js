@@ -1,26 +1,24 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import s from './Filter.module.scss';
+import styles from './Filter.module.scss';
+import Form from 'react-bootstrap/Form';
 
 const Filter = ({ value, onChange }) => {
     return (
-        <div>
-            <label className={s.FilterLabel}>
-                Find contact by name:
-                <input
-                    className={s.FilterInput}
-                    type='text'
-                    value={value}
+        <>
+            <Form.Group className="mb-3" controlId="formGroupInput">
+                <Form.Label className={styles.FilterLabel}>Find contact by name:</Form.Label>
+                <Form.Control className={styles.FilterInput} type="text" placeholder="Adam Parrish" value={value}
                     onChange={onChange} />
-            </label>
-        </div>
+            </Form.Group>
+        </>
     )
 
 }
 
-Filter.protoTypes = {
-    filter: PropTypes.string,
-    onChange: PropTypes.func,
+Filter.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
 }
 
 export default Filter;

@@ -1,68 +1,97 @@
-// import { Component } from "react";
-import { connect, useDispatch } from "react-redux";
-import { useEffect } from 'react';
-import { addContacts, deleteContacts, fetchContacts } from '../redux/contacts-operations';
-import { filterContacts } from '../redux/contacts-actions';
-import { getFilterContacts, getVisibleContacts } from '../redux/contacts-selectors';
+import React, { Suspense, lazy, useEffect, createContext } from "react";
+import { useLocation, useRoutes } from 'react-router-dom';
+import PrivateRoute from '../routes/PrivateRoute';
+import PublicRoute from "routes/PublicRoute";
+import { useDispatch } from "react-redux";
+import { AnimatePresence } from "framer-motion";
+
 // components
-import Container from "./Container";
-import Section from "./Section";
-import PhonebookForm from "./PhonebookForm";
-import Filter from "./Filter";
-import ContactsList from "./ContactsList";
+import LoadingSpinner from '../components/Spinner/';
+import BodyTheme from "./BodyTheme";
+import { getCurrentUser } from "redux/auth/auth-operation";
 
+export const ThemeContext = createContext(null);
 
-function App({
-  contacts,
-  filter,
-  onAddContact,
-  onDeleteContact,
-  onFilterContacts,
-}) {
+const Home = lazy(() => import('../pages/HomePage'));
+const Register = lazy(() => import('../pages/RegisterPage'));
+const Login = lazy(() => import('../pages/LoginPage'));
+const Phonebook = lazy(() => import('../pages/PhonebookPage'));
+const NotFound = lazy(() => import('../pages/NotFoundPage'));
+
+export default function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
-    dispatch(fetchContacts(
-    ));
+    dispatch(getCurrentUser());
   }, [dispatch]);
+
+  const element = useRoutes([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "register",
+      element:
+        <PublicRoute>
+          <Register />
+        </PublicRoute>,
+
+    },
+    {
+      path: "login",
+      element:
+        <PublicRoute>
+          < Login />
+        </PublicRoute>,
+
+    },
+    {
+      path: "phonebook",
+      element:
+        <PrivateRoute>
+          < Phonebook />
+        </PrivateRoute>,
+    },
+    {
+      path: "*",
+      element: <NotFound />,
+    }
+  ]);
+  if (!element) return null;
 
   return (
     <>
-      <Container>
-        <Section title="Phonebook">
-          <PhonebookForm
-            onSubmit={contact => onAddContact(contact)}
-          />
-        </Section>
+      <BodyTheme>
+        <AnimatePresence mode="wait">
+          <Suspense fallback={<LoadingSpinner />}>
+            {React.cloneElement(element, { key: location.pathname })}
+          </Suspense>
+        </AnimatePresence>
+      </BodyTheme>
+      {/* <Suspense fallback={<LoadingSpinner />}>
+        <AnimatePresence mode="wait" initial={false}>
+          <Routes>
+            <Route exact path='/' component={Home} />
+            <PublicRoute
+              path='/register'
+              restricted
+              redirectTo='/phonebook'
+              component={Register} />
+            <PublicRoute
+              path='/login'
+              restricted
+              redirectTo='/phonebook'
+              component={Login} />
+            <PrivateRoute path='/phonebook' component={Phonebook} redirectTo='/' />
+            <Route component={NotFound} />
+          </Routes>
+        </AnimatePresence>
+      </Suspense> */}
 
-        <Section title='Contacts'>
-          <Filter
-            value={filter} onChange={e => onFilterContacts(e.currentTarget.value)}
-          />
-
-          <ContactsList
-            contacts={contacts}
-            deleteContact={contacts => onDeleteContact(contacts.id)}
-          />
-        </Section>
-
-      </Container>
     </>
-
   )
 }
 
-const mapStateToStore = state => {
-  return {
-    contacts: getVisibleContacts(state),
-    filter: getFilterContacts(state),
-  }
-};
 
-const mapDispatchToProps = dispatch => ({
-  onAddContact: contact => dispatch(addContacts(contact)),
-  onDeleteContact: id => dispatch(deleteContacts(id)),
-  onFilterContacts: value => dispatch(filterContacts(value)),
-})
-
-export default connect(mapStateToStore, mapDispatchToProps)(App);

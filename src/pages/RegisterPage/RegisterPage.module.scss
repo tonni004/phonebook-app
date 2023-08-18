@@ -1,0 +1,60 @@
+@import '../../components/Styles/_variables.scss';
+@import '../../components/ToggleThemeButton/ToggleThemeButton.module.scss';
+
+.RegisterForm {
+    display: flex;
+    flex-direction: column;
+    
+    @media screen and (min-width: $mobile) {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-left: 30px;
+        border-left: $form-border;
+    }
+}
+
+.RegisterFormTitle {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.ToggleButtonField {
+    composes: ToggleButtonField;
+}
+
+.DescriptionPanel {
+    @media screen and (min-width: $mobile) {
+        display: none;
+    }
+
+    @media screen and (min-width: $desktop) {
+        display: flex;
+       width: 55%;
+       padding-right: 10px; 
+
+       .DescriptionTitlePanel {
+        margin-bottom: 40px;
+        }
+        .DescriptionTextPanel {
+        padding: 0 30px;
+        }
+    }
+    
+    
+}
+
+
+.LinkToLoginPanel {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: $form-border;
+
+    .LinkToLoginPanelText {
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+}

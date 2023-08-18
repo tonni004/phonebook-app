@@ -1,0 +1,25 @@
+@import '../../components/Styles/variables';
+
+.ContactsField {
+    height: 100vh;
+    
+    @media screen and (min-width: $mobile) {
+        display: block;   
+    }
+    @media screen and (min-width: $tablet) {
+            padding: 0 120px;  
+        }
+    @media screen and (min-width: $desktop) {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+    }
+
+}
+
+.ModalButtonField {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

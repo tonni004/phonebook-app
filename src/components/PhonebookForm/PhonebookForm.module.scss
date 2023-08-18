@@ -1,68 +1,93 @@
-@import '../Styles/_variables';
+@import '../Styles/_variables.scss';
+// @import '../BodyTheme/BodyTheme.css';
+
 
 .PhonebookForm {
-    padding: 25px 15px;
-    border: $input-border;
-    border-radius: 10px;
+    position: relative;
+    padding: 30px 20px;
+    border: $form-border;
+    box-shadow: 0px 0px 17px 1px rgba(51, 51, 51, 0.15);
+    border-radius: 5px;
 
+    background-image: url('https://images.unsplash.com/photo-1463154545680-d59320fd685d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=675&q=80');
+    background-size: cover;
+    transition: box-shadow $transition, border $transition;
+
+    @media screen and (min-width: $mobile) {
+        height: 520px;
+        background-position: 0% 4%;
+        
+    }
+
+    @media screen and (min-width: $desktop) {
     width: 40%;
-
-    display: flex;
-    flex-direction: column;
+    height: 535px;
+    background-position: 0% 20%;
+        
+    }
+&.dark {
+    box-shadow: 0px 0px 25px 1px rgba(255, 255, 255, 0.568);
+}
 }
 
-.PhonebookLabel {
-    display: flex;
-    flex-direction: column;
-    
-    font-size: 20px;
-    font-weight: 500;
+.PhonebookFormTitle {
+    color: black;
+    margin-bottom: 30px;
+    text-align: center;   
 }
 
-.PhonebookNumberLabel {
-    margin-top: 5px;
-    composes: PhonebookLabel;
+.PhonebookFormOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+
+    &.dark {
+    opacity: 0.12;
+    background-color: #333;
+    transition: $transition;
+}
 }
 
-.PhonebookInput {
-    padding: 6px;
-    margin-top: 10px;
 
-    border: $input-border;
-    border-radius: $input-border-radius;
+.PhonebookFormText {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: dimgray;
 
-    background-color: $input-backround-color;
-
-    transition: box-shadow 0.3s ease;
+    &.dark {
+        color: $assent-color;
+    }
 }
 
-.PhonebookInput:hover,
-.PhonebookInput:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px $assent-color;
-   
+.PhonebookFormLabel {
+    &.dark {
+        color: black;
+    }
 }
 
-.PhonebookBtn {
-    width: 30%;
-    padding: 5px 10px;
-    margin-top: 30px;
-    border: 2px solid $assent-color;
-    border-radius: 22px;
-
-    color: $assent-color;
-    background-color: white;
-
-    cursor: pointer;
-
-    transition: background-color 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
+.FormInput:invalid {
+    animation: shake 0.3s forwards;
+    color: red;
 }
 
-.PhonebookBtn:hover,
-.PhonebookBtn:focus {
-    color: white;
-    background-color: $assent-color;
-    
+@keyframes shake {
+    25% {
+        transform: translateX(5px);
+    }
+    45% {
+        transform: translateX(-5px);
+    }
+    65% {
+        transform: translateX(5px);
+    }
+    85% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }
-

@@ -1,0 +1,49 @@
+@import '../../components/Styles/variables.scss';
+@import '../../components/ToggleThemeButton/ToggleThemeButton.module.scss';
+
+.LoginFormField {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+
+    color: $assent-color;   
+}
+
+.LoginPageTitle {
+    margin-top: 10px;
+    text-align: center;
+
+    @media screen and (min-width: $mobile) {
+        margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 30px;
+    }
+    }
+
+.NotAMemberDiv {
+    padding-bottom: 20px;
+    border-bottom: $form-border;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: $tablet) {
+        display: flex;
+    }
+
+    .NotAMemberText {
+        @media screen and (min-width: $mobile) and (max-width:767px) {
+            margin-bottom: 5px;
+        }
+
+        @media screen and (min-width: $tablet) {
+            margin-right: 10px;
+        }
+    }
+}
+
+.ToggleButtonField {
+composes: ToggleButtonField;
+}

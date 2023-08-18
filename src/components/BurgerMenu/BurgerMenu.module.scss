@@ -1,0 +1,75 @@
+@import '../Styles/variables';
+.BurgerNavMenu {
+    @media screen and (min-width: $mobile) and (max-width: 767px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 330px;
+    z-index: 98;
+    &.true {
+            overflow: visible;
+            pointer-events: visible;
+        }
+    
+    &.false {
+            overflow: hidden;
+            pointer-events: none;
+        }
+    }
+
+    @media screen and (min-width: $tablet) and (max-width: 1279px){
+        width: 650px;
+    }
+    @media screen and (min-width:$desktop){
+        position: relative;
+        width: 100%;
+    }
+}
+
+.BurgerMenuBackground {
+    
+    @media screen and (min-width: $mobile) and (max-width: 1279px)  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 330px;
+    z-index: 97;
+    background: rgba(61, 61, 61, 0.99);
+    }
+
+    @media screen and (min-width: $tablet) and (max-width: 1279px){
+    width: 650px;
+    }
+    
+    @media screen and (min-width: $desktop) {
+    clip-path: none; 
+    }
+}
+
+
+.BurgerMenuNavField {
+    @media screen and (min-width: $mobile) and (max-width: 1279px) {
+    padding: 25px;
+
+    top: 100px;
+    width: 300px;
+    color: #fff;
+}
+
+@media screen and (min-width: $tablet) and (max-width: 1279px){
+    width: 650px;
+}
+
+}
+
+@keyframes openAnimation {
+    0% {
+        opacity: 0;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}

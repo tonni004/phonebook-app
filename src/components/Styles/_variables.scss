@@ -1,13 +1,22 @@
-$assent-color: #00aeef;
+// screen
+$mobile: 360px;
+$tablet: 768px;
+$desktop: 1280px;
 
-$input-border: 1px solid hsl(0, 0%, 90%);
-$input-border-radius: 10px;
-$input-backround-color: hsl(0, 0%, 97%);
+// color
+$assent-color: #212529;
+$white-color: #ffffff;
+$nav-link-dark-theme: #878484;
+$nav-link-color: #333333;
+
+$form-border: 2px solid #e0dddd;
+
+$transition:500ms ease;
+
+// footer icon
+$footer-icon-width: 35px;
+$footer-icon-height: 35px;
 
 
-// button
 
-$fuschia: #ff0081;
-$button-bg: $fuschia;
-$button-text-color: #fff;
-$baby-blue: #f8faff;
+

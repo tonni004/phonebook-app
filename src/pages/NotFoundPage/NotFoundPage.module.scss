@@ -1,0 +1,18 @@
+.NotFoundPageField {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 50px;
+    text-align: center;
+
+    .ErrorTitle {
+        font-size: 120px;
+        font-weight: 300;
+    }
+
+    .PageNotFoundTitle {
+        font-size: 25px;
+        font-weight: 700;
+    }
+}
