@@ -24,7 +24,7 @@ export default function Navigation() {
 
                 <ul className={styles.NavLink}>
                     <li className={classNames(styles.NavLinkItem, styles[theme])}>
-                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/phonebook-app">Home</Nav.Link>
                     </li>
 
                     {isSignedIn &&
@@ -35,7 +35,7 @@ export default function Navigation() {
                     }
 
                     <li className={classNames(styles.NavLinkItem, styles[theme])}>
-                        <Nav.Link href="https://github.com/tonni004/r-hw2-phonebook">GitHub</Nav.Link>
+                        <Nav.Link href="https://github.com/tonni004/phonebook-app">GitHub</Nav.Link>
                     </li>
                     <div className={classNames(styles.ToggleButtonField, styles[theme])}>
                         <ToggleThemeButton />

@@ -44,7 +44,7 @@ export default function Footer() {
                                         <a href=' ' className={s.FollowUsLink} ><img className={s.FollowUsImg} src={Instagram} aria-label='instagram' /></a>
                                     </li>
                                     <li className={s.FooterIcon}>
-                                        <a href=' ' className={s.FollowUsLink}><img className={s.FollowUsImg} src={Github} aria-label='github' /></a>
+                                        <a href='https://github.com/tonni004/phonebook-app' className={s.FollowUsLink}><img className={s.FollowUsImg} src={Github} aria-label='github' /></a>
                                     </li>
                                     <li className={s.FooterIcon}>
                                         <a href=' ' className={s.FollowUsLink}><img className={s.FollowUsImg} src={LinkedIn} aria-label='linkedin' /></a>

@@ -28,7 +28,7 @@ export default function App() {
 
   const element = useRoutes([
     {
-      path: "/",
+      path: "phonebook-app",
       element: <Home />,
     },
     {
