@@ -85,8 +85,6 @@ export const getCurrentUser = () => async (dispatch, getState) => {
         const response = await currentUser();
         dispatch(getCurrentUserSuccess(response));
     } catch (error) {
-        const errorMessage = 'Something went wrong. Wait a minute or two and try again!';
-        // ErrorNotification(errorMessage)
         dispatch(getCurrentUserError(error.message))
     }
 }
