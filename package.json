@@ -2,7 +2,7 @@
   "name": "phonebook-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/tonni004/phonebook-app/",
+  "homepage": "https://tonni004.github.io/phonebook-app/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.3",
