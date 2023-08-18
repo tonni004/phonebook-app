@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useCycle } from "framer-motion";
 import classNames from "classnames";
 import styles from './BurgerMenu.module.scss';
@@ -36,11 +36,13 @@ export default function BurgerMenu() {
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
     };
-    const handleOutsideClick = (e) => {
+
+    const handleOutsideClick = useCallback((e) => {
         if (isOpen && containerRef.current && !containerRef.current.contains(e.target)) {
             toggleOpen(false);
         }
-    };
+    }, [isOpen, containerRef, toggleOpen]);
+
     const handleMenuClick = (e) => {
         e.stopPropagation();
     };
@@ -53,7 +55,7 @@ export default function BurgerMenu() {
             window.removeEventListener('resize', handleResize);
             document.removeEventListener('click', handleOutsideClick);
         };
-    }, [isOpen]);
+    }, [isOpen, handleOutsideClick]);
 
     return (
         <div>
