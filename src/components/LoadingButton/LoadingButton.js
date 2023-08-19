@@ -48,4 +48,5 @@ export default function LoadingButton({ title, link, size = 'lg' }) {
 LoadingButton.propTypes = {
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
+    size: PropTypes.string,
 }

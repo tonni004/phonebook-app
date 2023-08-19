@@ -63,7 +63,7 @@ export default function RegisterPage() {
                                 <h2 className={styles.RegisterFormTitle}>Create your free account</h2>
                                 <div className={styles.LinkToLoginPanel}>
                                     <p className={styles.LinkToLoginPanelText}>Already a member?</p>
-                                    <a href="/login">Sign in</a>
+                                    <a href="/phonebook-app/login">Sign in</a>
                                 </div>
 
                                 <RegisterForm onSubmit={onRegisterNewUser} />

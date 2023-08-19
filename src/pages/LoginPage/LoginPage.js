@@ -51,7 +51,7 @@ export default function LoginPage() {
                                     <h2 className={styles.LoginPageTitle}>Account sign in</h2>
                                     <div className={styles.NotAMemberDiv}>
                                         <p className={styles.NotAMemberText}>Not a member?</p>
-                                        <Link to="/register">Create a free account</Link>
+                                        <Link to="/phonebook-app/register">Create a free account</Link>
                                     </div>
                                     <LoginForm onSubmit={onLogIn} />
                                 </div>

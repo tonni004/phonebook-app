@@ -10,7 +10,7 @@ export default function NotFoundPage() {
                     <h1 className={styles.ErrorTitle}>404</h1>
                     <p className={styles.PageNotFoundTitle}>Page not found</p>
                     <p>Oops! he page you are looking for doesn't exist or an other error occurred. </p>
-                    <LoadingButton title={'Go Home'} link={'phonebook-app/'} size={'m'} />
+                    <LoadingButton title={'Go Home'} link={'/phonebook-app'} size={'m'} />
                 </div>
             </div>
         </Container>
