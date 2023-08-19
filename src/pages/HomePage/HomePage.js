@@ -69,15 +69,15 @@ export default function Home() {
                                 className={styles.ButtonField}>
                                 {isSignedIn
                                     ? <div>
-                                        <LoadingButton title={`Let's start !`} link={'/phonebook'} />
+                                        <LoadingButton title={`Let's start !`} link={'/phonebook-app/phonebook'} />
                                     </div>
 
                                     : <ul className={styles.BtnPanel}>
                                         <li>
-                                            <LoadingButton title={'Register'} link={'/register'} />
+                                            <LoadingButton title={'Register'} link={'/phonebook-app/register'} />
                                         </li>
                                         <li>
-                                            <LoadingButton title={'Sign in'} link={'/login'} />
+                                            <LoadingButton title={'Sign in'} link={'/phonebook-app/login'} />
                                         </li>
                                     </ul>}
 

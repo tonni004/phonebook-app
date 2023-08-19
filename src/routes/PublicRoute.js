@@ -29,7 +29,7 @@ export default function PublicRoute({ children }) {
     const isSignedIn = useSelector(getIsAuthenticated);
     return (
         <>
-            {isSignedIn ? <Navigate to="/phonebook" /> : children}
+            {isSignedIn ? <Navigate to="/phonebook-app/phonebook" /> : children}
 
         </>
     );

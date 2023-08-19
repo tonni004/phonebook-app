@@ -1,4 +1,8 @@
+import { useContext } from 'react';
+import classNames from 'classnames';
 import s from './Footer.module.scss';
+import { ThemeContext } from "components/BodyTheme/BodyTheme";
+
 // svg
 import Instagram from '../../images/svg/instagram.svg';
 import Github from '../../images/svg/github.svg';
@@ -8,10 +12,13 @@ import Android from '../../images/svg/android.svg';
 import WaveAnimation from 'components/WaveAnimation';
 
 export default function Footer() {
+    const { theme } = useContext(ThemeContext);
+
     return (
         <>
-            <WaveAnimation />
-            <div className={s.FooterBackground}>
+            <div className={classNames(s.FooterBackground, s[theme])}>
+                <WaveAnimation />
+
 
                 <footer >
                     <div className={s.Footer}>

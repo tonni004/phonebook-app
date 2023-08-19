@@ -47,9 +47,11 @@
     &:hover,
     &:focus {
         color: $assent-color;
+
         @media screen and (min-width: $mobile) and (max-width: 1279px) {
+            color: $white-color;
             transform: scaleX(0.95);
-            }
+        }
         
     }
 

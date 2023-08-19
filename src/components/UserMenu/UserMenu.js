@@ -28,7 +28,7 @@ export default function UserMenu() {
                 height='33'
                 className={classNames(styles.UserAvatar, styles[theme])} />
             <Nav.Link
-                href='/phonebook'
+                href='/phonebook-app/phonebook'
                 className={classNames(styles.UserName, styles[theme])}
             >Hi, {userName}!</Nav.Link >
             <div className={classNames(styles.UserLogoutFieldBurgerMenuName, styles[theme])}><LogoutButton onClick={getLogout} /></div>

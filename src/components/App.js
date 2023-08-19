@@ -32,7 +32,7 @@ export default function App() {
       element: <Home />,
     },
     {
-      path: "register",
+      path: "phonebook-app/register",
       element:
         <PublicRoute>
           <Register />
@@ -40,7 +40,7 @@ export default function App() {
 
     },
     {
-      path: "login",
+      path: "phonebook-app/login",
       element:
         <PublicRoute>
           < Login />
@@ -48,7 +48,7 @@ export default function App() {
 
     },
     {
-      path: "phonebook",
+      path: "phonebook-app/phonebook",
       element:
         <PrivateRoute>
           < Phonebook />
@@ -70,6 +70,7 @@ export default function App() {
           </Suspense>
         </AnimatePresence>
       </BodyTheme>
+
       {/* <Suspense fallback={<LoadingSpinner />}>
         <AnimatePresence mode="wait" initial={false}>
           <Routes>

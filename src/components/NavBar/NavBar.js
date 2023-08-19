@@ -8,7 +8,7 @@ import styles from './NavBar.module.scss';
 import { ThemeContext } from 'components/BodyTheme/BodyTheme.js';
 import ToggleThemeButton from 'components/ToggleThemeButton';
 import UserMenu from 'components/UserMenu';
-// import BurgerMenu from "components/BurgerMenu";
+
 
 
 import { getIsAuthenticated } from 'redux/auth/auth-selectors';
@@ -29,7 +29,7 @@ export default function Navigation() {
 
                     {isSignedIn &&
                         <li className={classNames(styles.NavLinkItem, styles[theme])}>
-                            <Nav.Link href="/phonebook">Phonebook</Nav.Link>
+                            <Nav.Link href="/phonebook-app/phonebook">Phonebook</Nav.Link>
                         </li>
 
                     }

@@ -21,7 +21,7 @@ export default function PrivateRoute({ children }) {
     const isSignedIn = useSelector(getIsAuthenticated);
     return (
         <>
-            {isSignedIn ? children : <Navigate to="/login" />}
+            {isSignedIn ? children : <Navigate to="/phonebook-app/login" />}
 
         </>
     );

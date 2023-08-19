@@ -6,7 +6,7 @@ export default function CloseBtn() {
     const navigate = useNavigate()
 
     const goHome = () => {
-        navigate('/');
+        navigate('/phonebook-app');
 
     }
     return (
