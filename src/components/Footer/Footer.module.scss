@@ -100,7 +100,7 @@ a {
     height: $footer-icon-height;
 
     .FooterIcon:hover &,
-    .FooterIcon:focus & {
+    .FooterIcon:focus & { 
             animation: pulse 1s infinite ease-in-out alternate;
         }
 }

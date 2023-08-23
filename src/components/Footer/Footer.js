@@ -19,7 +19,6 @@ export default function Footer() {
             <div className={classNames(s.FooterBackground, s[theme])}>
                 <WaveAnimation />
 
-
                 <footer >
                     <div className={s.Footer}>
 

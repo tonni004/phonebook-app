@@ -14,7 +14,7 @@ export default function PrivateRoute({ children }) {
     );
 }
 
-// other version
+// other version 
 
 // export default function PrivateRoute({
 //     // isAuthenticated,

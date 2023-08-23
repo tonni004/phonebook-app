@@ -3,6 +3,19 @@ import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
 import { getIsAuthenticated } from "redux/auth/auth-selectors"
 
+
+export default function PublicRoute({ children }) {
+    const isSignedIn = useSelector(getIsAuthenticated);
+    return (
+        <>
+            {isSignedIn ? <Navigate to="/phonebook-app/phonebook" /> : children}
+
+        </>
+    );
+}
+
+// other version 
+
 // export default function PublicRoute({
 //     component: Component,
 //     // isAuthenticated,
@@ -24,14 +37,4 @@ import { getIsAuthenticated } from "redux/auth/auth-selectors"
 
 //     )
 // }
-
-export default function PublicRoute({ children }) {
-    const isSignedIn = useSelector(getIsAuthenticated);
-    return (
-        <>
-            {isSignedIn ? <Navigate to="/phonebook-app/phonebook" /> : children}
-
-        </>
-    );
-}
 
