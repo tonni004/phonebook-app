@@ -90,30 +90,36 @@ a {
     height: $footer-icon-height;
 }
 
+.IconList {
+    display: flex;
+}
+
 .FollowUsImg {
     display: block;
     width: $footer-icon-width;
     height: $footer-icon-height;
-}
-.IconList {
-    display: flex;  
+
+    .FooterIcon:hover &,
+    .FooterIcon:focus & {
+            animation: pulse 1s infinite ease-in-out alternate;
+        }
 }
 
 .FooterIcon {
     height:$footer-icon-height;
     width: $footer-icon-width;
+
     cursor: pointer;
 
     &:not(:last-child) {
         margin-right: 15px;
     }
 
-    &:hover,
-    &:focus {
+    &:hover .FollowUsImg,
+    &:focus .FollowUsImg {
         animation: pulse 1s infinite ease-in-out alternate;
     }
 }
-
 
 .FooterCopyright {
     margin-top: 50px;

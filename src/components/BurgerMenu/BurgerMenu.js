@@ -7,6 +7,7 @@ import styles from './BurgerMenu.module.scss';
 import { BurgerMenuToggle } from "components/BurgerMenuToggle/BurgerMenuToggle";
 import { useDimensions } from './use-dimensions.ts';
 import Navigation from "components/NavBar";
+
 const sidebar = {
     open: (height = 1000) => ({
         clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,

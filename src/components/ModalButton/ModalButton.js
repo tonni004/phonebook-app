@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { ThemeContext } from 'components/BodyTheme/BodyTheme';
 import classNames from 'classnames';
+import PropTypes from "prop-types";
 import s from './ModalButton.module.scss';
 
 export default function ModalButton({ onClick }) {
@@ -17,4 +18,8 @@ export default function ModalButton({ onClick }) {
         </>
 
     )
+}
+
+ModalButton.propTypes = {
+    onClick: PropTypes.func.isRequired,
 }

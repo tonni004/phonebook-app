@@ -16,7 +16,7 @@ export default function UserMenu() {
     const { theme } = useContext(ThemeContext);
     const userName = useSelector(getUserName);
     const getLogout = useCallback((user) => {
-        dispatch(logoutUser(user))
+        dispatch(logoutUser(user));
     }, [dispatch])
 
     return (

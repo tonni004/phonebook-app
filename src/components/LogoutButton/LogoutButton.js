@@ -14,6 +14,8 @@ export default function LogoutButton({ onClick }) {
             setStyleType('outline-light');
         }
     }, [theme]);
+
+
     return (
         <>
             <Button
